@@ -109,6 +109,12 @@ config CPU_FREQ_DEFAULT_GOV_INTERACTIVE
 	  loading your cpufreq low-level hardware driver, using the
 	  'interactive' governor for latency-sensitive workloads.
 
+config CPU_FREQ_DEFAULT_GOV_ZZMOOVE
+	bool "zzmoove"
+	select CPU_FREQ_GOV_ZZMOOVE
+	help
+	  Use zzmoove as the default governor
+
 endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
@@ -204,6 +210,13 @@ config CPU_FREQ_GOV_CONSERVATIVE
 
 	  For details, take a look at linux/Documentation/cpu-freq.
 
+	  If in doubt, say N.
+
+config CPU_FREQ_GOV_ZZMOOVE
+	tristate "'zzmoove' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	  'zzmoove' - https://github.com/zanezam/cpufreq-governor-zzmoove/
 	  If in doubt, say N.
 
 config CPU_INPUT_BOOST
